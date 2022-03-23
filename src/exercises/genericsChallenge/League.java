@@ -14,20 +14,25 @@ public class League<T extends Team> {
         teams = new ArrayList<>();
     }
 
-    void addTeamToLeague(T team) {
+    public void addTeamToLeague(T team) {
         if (teams.contains(team)) {
             System.out.println(team.getName() + " already exists in league.");
         } else {
             teams.add(team);
+            System.out.println(team.getName() + " added to " + name);
         }
     }
 
-    void printTable() {
-        Collections.sort(teams);
-        System.out.println(name + " standings");
-        System.out.println("--------------------------");
-        for (Team team : teams) {
-            System.out.println(team.getName() + " (" + team.getPoints() + ")");
+    public void printTable() {
+        if (teams.isEmpty()) {
+            System.out.println("There are no teams in " + name);
+        } else {
+            Collections.sort(teams);
+            System.out.println(name + " standings");
+            System.out.println("--------------------------");
+            for (Team team : teams) {
+                System.out.println(team.getName() + " (" + team.getPoints() + ")");
+            }
         }
     }
 }
